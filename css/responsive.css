@@ -1,0 +1,1373 @@
+/* ========================================
+   BREAKPOINTS OPTIMIZADOS
+   - Mobile Small: 320px - 480px
+   - Mobile: 481px - 768px
+   - Tablet Small: 769px - 900px (Zenbook Fold, etc)
+   - Tablet Large: 901px - 1024px
+   - Desktop: 1025px+
+======================================== */
+
+/* ========================================
+   PREVENCIÓN DE OVERFLOW HORIZONTAL GLOBAL
+======================================== */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* ========================================
+   TABLETS PEQUEÑAS (769px - 900px) - NUEVO
+   Para dispositivos como Asus Zenbook Fold (853x1280)
+======================================== */
+@media (min-width: 769px) and (max-width: 900px) {
+    
+    /* Prevenir overflow en el navbar */
+    .navbar {
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .nav-container {
+        padding: 0.8rem 0.8rem;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .logo-container {
+        flex-shrink: 0;
+        max-width: 30%;
+        gap: 0.5rem;
+    }
+    
+    .nav-menu {
+        gap: 0.3rem; 
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        flex-shrink: 1;
+    }
+    
+    .nav-link {
+        white-space: nowrap;
+        font-size: 0.75rem;
+        padding: 0.4rem 0.5rem;
+    }
+    
+    .logo-img {
+        height: 38px;
+        width: auto;
+    }
+
+    .logo-text {
+        font-size: 0.7rem;
+    }
+    
+    .logo-main {
+        font-size: clamp(0.7rem, 0.95vw, 0.8rem);
+        line-height: 1.2;
+    }
+    
+    .logo-sub {
+        font-size: clamp(0.52rem, 0.65vw, 0.6rem);
+        line-height: 1.2;
+    }
+    
+    /* Hero */
+    .hero {
+        min-height: 80vh;
+        padding: 4rem 1.5rem;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .hero-title {
+        font-size: clamp(2rem, 4.5vw, 2.8rem);
+    }
+    
+    .verse-text {
+        font-size: clamp(1rem, 2.2vw, 1.15rem);
+    }
+    
+    .hero-description {
+        font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+    }
+    
+    /* Secciones */
+    .section {
+        padding: 4rem 1.2rem;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 1.2rem;
+        box-sizing: border-box;
+    }
+    
+    .section-title {
+        font-size: clamp(1.6rem, 2.8vw, 2rem);
+    }
+    
+    /* Grids */
+    .schedule-grid,
+    .about-grid,
+    .ministry-grid {
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 1.3rem;
+        width: 100%;
+    }
+    
+    /* Contacto */
+    .contact-grid {
+        gap: 1.8rem;
+        width: 100%;
+    }
+    
+    .map-container {
+        height: clamp(280px, 28vh, 380px);
+        width: 100%;
+    }
+    
+    /* Featured Post */
+    .featured-post {
+        grid-template-columns: 1fr 1fr;
+        min-height: clamp(330px, 38vh, 480px);
+        max-height: clamp(380px, 43vh, 530px);
+        width: 100%;
+    }
+    
+    .featured-post-image {
+        min-height: clamp(330px, 38vh, 480px);
+        max-height: clamp(380px, 43vh, 530px);
+    }
+    
+    .featured-post-content {
+        padding: clamp(1.3rem, 2.5vw, 1.8rem);
+    }
+    
+    .featured-post-title {
+        font-size: clamp(1.2rem, 2.3vw, 1.5rem);
+    }
+    
+    .post-meta {
+        font-size: clamp(0.7rem, 1.3vw, 0.8rem);
+        gap: clamp(0.5rem, 0.8vw, 0.9rem);
+    }
+    
+    .featured-post-excerpt {
+        font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+    }
+}
+
+/* ========================================
+   TABLETS MEDIANAS A GRANDES (901px - 1024px)
+======================================== */
+@media (min-width: 901px) and (max-width: 1024px) {
+    
+    /* Prevenir overflow en el navbar */
+    .navbar {
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .nav-container {
+        padding: 1rem 1rem;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .logo-container {
+        flex-shrink: 0;
+        max-width: 35%;
+    }
+    
+    .nav-menu {
+        gap: 0.5rem;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        flex-shrink: 1;
+    }
+    
+    .nav-link {
+        white-space: nowrap;
+        font-size: 0.85rem;
+        padding: 0.5rem 0.7rem;
+    }
+    
+    .logo-img {
+        height: 45px;
+        width: auto;
+    }
+
+    .logo-text {
+        font-size: 0.8rem;
+    }
+    
+    .logo-main {
+        font-size: clamp(0.85rem, 1.2vw, 1rem);
+        line-height: 1.2;
+    }
+    
+    .logo-sub {
+        font-size: clamp(0.6rem, 0.8vw, 0.7rem);
+        line-height: 1.2;
+    }
+    
+    /* Hero */
+    .hero {
+        min-height: 80vh;
+        padding: 4rem 1.5rem;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .hero-title {
+        font-size: clamp(2.2rem, 5vw, 3rem);
+    }
+    
+    .verse-text {
+        font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+    }
+    
+    .hero-description {
+        font-size: clamp(1rem, 2vw, 1.1rem);
+    }
+    
+    /* Secciones */
+    .section {
+        padding: 4rem 1.5rem;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 1.5rem;
+        box-sizing: border-box;
+    }
+    
+    .section-title {
+        font-size: clamp(1.7rem, 3vw, 2.2rem);
+    }
+    
+    /* Grids */
+    .schedule-grid,
+    .about-grid,
+    .ministry-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        width: 100%;
+    }
+    
+    /* Contacto */
+    .contact-grid {
+        gap: 2rem;
+        width: 100%;
+    }
+    
+    .map-container {
+        height: clamp(300px, 30vh, 400px);
+        width: 100%;
+    }
+    
+    /* Featured Post */
+    .featured-post {
+        grid-template-columns: 1fr 1fr;
+        min-height: clamp(350px, 40vh, 500px);
+        max-height: clamp(400px, 45vh, 550px);
+        width: 100%;
+    }
+    
+    .featured-post-image {
+        min-height: clamp(350px, 40vh, 500px);
+        max-height: clamp(400px, 45vh, 550px);
+    }
+    
+    .featured-post-content {
+        padding: clamp(1.5rem, 3vw, 2rem);
+    }
+    
+    .featured-post-title {
+        font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+    }
+    
+    .post-meta {
+        font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+        gap: clamp(0.6rem, 1vw, 1rem);
+    }
+    
+    .featured-post-excerpt {
+        font-size: clamp(0.82rem, 1.8vw, 0.95rem);
+    }
+}
+
+/* ========================================
+   TABLETS Y MÓVILES (max-width: 992px)
+======================================== */
+@media (max-width: 992px) {
+    /* Contacto en una columna */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+    
+    .map-container {
+        height: clamp(300px, 25vh, 350px);
+        width: 100%;
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        width: 100%;
+    }
+}
+
+/* ========================================
+   MÓVILES (max-width: 768px)
+======================================== */
+@media (max-width: 768px) {
+    /* Variables ajustadas */
+    :root {
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 0.8rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
+    }
+    
+    /* Tipografía base */
+    html {
+        font-size: 15px;
+    }
+    
+    /* ========== PÁGINAS INTERNAS ========== */
+    .page-hero {
+        padding: 6rem 1.5rem 3rem;
+        min-height: 35vh;
+        width: 100%;
+    }
+    
+    .page-hero-title {
+        font-size: clamp(1.8rem, 4vw, 2rem);
+    }
+    
+    .page-hero-subtitle {
+        font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+    
+    /* Timeline */
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 50px;
+    }
+    
+    .timeline-marker {
+        left: 20px;
+    }
+    
+    .timeline-content {
+        width: 100%;
+    }
+    
+    /* MVV */
+    .mvv-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    /* Team */
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .team-photo {
+        max-height: 350px;
+    }
+    
+    .team-photo img {
+        object-position: center top;
+    }
+    
+    /* Ministerios */
+    .ministry-detail-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .ministry-detail-image {
+        order: 2;
+    }
+    
+    .ministry-detail-content {
+        order: 1;
+    }
+    
+    .ministry-features {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Blog */
+    .featured-post {
+        grid-template-columns: 1fr;
+        gap: 0;
+        min-height: auto;
+        max-height: none;
+    }
+    
+    .featured-post-image {
+        min-height: clamp(220px, 25vh, 300px);
+        width: 100%;
+    }
+    
+    .featured-post-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    
+    .featured-badge {
+        top: 15px;
+        left: 15px;
+        font-size: clamp(0.8rem, 1.5vw, 0.85rem);
+    }
+    
+    .featured-post-content {
+        padding: clamp(1.5rem, 3vw, 2rem);
+    }
+    
+    .featured-post-title {
+        font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    }
+    
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .blog-card {
+        max-width: 100%;
+    }
+    
+    .blog-image {
+        aspect-ratio: 16/10;
+    }
+    
+    .blog-content {
+        padding: 1.3rem;
+    }
+    
+    .blog-title {
+        font-size: clamp(1.1rem, 2vw, 1.2rem);
+    }
+    
+    .blog-excerpt {
+        font-size: clamp(0.85rem, 1.5vw, 0.9rem);
+    }
+    
+    /* Categorías */
+    .categories-filter {
+        padding: 0 1rem;
+        gap: 0.8rem;
+    }
+    
+    .category-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    }
+    
+    /* Newsletter */
+    .newsletter-form {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .newsletter-input {
+        width: 100%;
+    }
+    
+    /* Contacto */
+    .contact-form-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .contact-form .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .directions-info,
+    .schedule-attention-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Donaciones */
+    .why-donate-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .course-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .donation-methods-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .donation-method-card {
+        padding: clamp(1.5rem, 3vw, 2rem);
+    }
+    
+    .method-icon {
+        width: clamp(60px, 10vw, 70px);
+        height: clamp(60px, 10vw, 70px);
+        font-size: clamp(1.8rem, 3vw, 2rem);
+    }
+    
+    .donation-method-card h3 {
+        font-size: clamp(1.2rem, 2.5vw, 1.3rem);
+    }
+    
+    .cash-info {
+        padding: 1.5rem 1rem;
+    }
+    
+    .cash-option {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+        padding: 1.5rem 0;
+    }
+    
+    .cash-option i {
+        font-size: clamp(2.2rem, 4vw, 2.5rem);
+    }
+    
+    .bank-details {
+        padding: 1.2rem;
+    }
+    
+    .bank-detail-item {
+        padding: 0.7rem 0;
+        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    }
+    
+    .qr-code-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .qr-code-container img {
+        max-width: clamp(160px, 20vw, 180px);
+    }
+    
+    .qr-number {
+        font-size: clamp(1.2rem, 2.5vw, 1.3rem);
+    }
+    
+    .usage-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .usage-card {
+        padding: clamp(1.5rem, 3vw, 2rem);
+    }
+    
+    .usage-percentage {
+        font-size: clamp(1.8rem, 3vw, 2rem);
+    }
+    
+    /* Navegación móvil */
+    .nav-container {
+        padding: clamp(0.7rem, 1.5vw, 0.8rem) clamp(1rem, 2vw, 1rem);
+        width: 100%;
+    }
+    
+    .logo-img {
+        height: clamp(40px, 5vw, 50px);
+    }
+    
+    .logo-main {
+        font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+    }
+    
+    .logo-sub {
+        font-size: clamp(0.6rem, 0.8vw, 0.65rem);
+    }
+    
+    .mobile-toggle {
+        display: block;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: clamp(60px, 8vh, 66px);
+        flex-direction: column;
+        background: var(--white);
+        width: 100%;
+        text-align: center;
+        transition: left 0.3s ease;
+        box-shadow: var(--shadow-md);
+        padding: 2rem 0;
+        gap: 0;
+        max-height: calc(100vh - clamp(60px, 8vh, 66px));
+        overflow-y: auto;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-menu li {
+        padding: 1rem 0;
+        width: 100%;
+        border-bottom: 1px solid var(--light);
+    }
+    
+    .nav-menu li:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 0.5rem 1rem;
+        font-size: clamp(0.9rem, 1.5vw, 1rem);
+    }
+    
+    /* Hero */
+    .hero {
+        min-height: clamp(85vh, 90vh, 90vh);
+        padding: 5rem 1.5rem 4rem;
+        background-attachment: scroll;
+        width: 100%;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.8rem, 4vw, 2.2rem);
+        margin-bottom: 1.2rem;
+    }
+    
+    .verse-text {
+        font-size: clamp(1rem, 2vw, 1.1rem);
+    }
+    
+    .verse-ref {
+        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    }
+    
+    .hero-description {
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+        margin-bottom: 2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+        width: 100%;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .scroll-indicator {
+        bottom: 20px;
+    }
+    
+    .scroll-indicator i {
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
+    }
+    
+    /* Secciones */
+    .section {
+        padding: 4rem 1.5rem;
+        width: 100%;
+    }
+    
+    .section-header {
+        margin-bottom: 2rem;
+    }
+    
+    .section-title {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+    
+    .section-subtitle {
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+    }
+    
+    /* Botones */
+    .btn {
+        padding: clamp(0.7rem, 1.5vw, 0.9rem) clamp(1.5rem, 3vw, 2rem);
+        font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+        gap: clamp(0.5rem, 1vw, 0.5rem);
+    }
+    
+    .btn i {
+        font-size: clamp(0.9rem, 1.5vw, 1rem);
+    }
+    
+    /* Grids - Una columna */
+    .schedule-grid,
+    .about-grid,
+    .ministry-grid,
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    /* Tarjetas de horario */
+    .schedule-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .schedule-icon i {
+        font-size: clamp(2.5rem, 5vw, 3rem);
+    }
+    
+    .schedule-title {
+        font-size: clamp(1.2rem, 2.5vw, 1.3rem);
+    }
+    
+    .schedule-time {
+        font-size: clamp(1rem, 2vw, 1.1rem);
+    }
+    
+    /* Tarjetas Quiénes Somos */
+    .about-card {
+        padding: 2.5rem 2rem;
+    }
+    
+    .about-icon i {
+        font-size: clamp(2.5rem, 5vw, 3rem);
+    }
+    
+    .about-title {
+        font-size: clamp(1.4rem, 3vw, 1.6rem);
+    }
+    
+    /* Tarjetas de ministerios */
+    .ministry-card {
+        padding: 2.5rem 2rem;
+    }
+    
+    .ministry-icon i {
+        font-size: clamp(3rem, 6vw, 3.5rem);
+    }
+    
+    .ministry-title {
+        font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+    }
+    
+    /* Testimonios */
+    .testimonial-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .testimonial-quote i {
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
+    }
+    
+    .author-avatar {
+        width: clamp(40px, 8vw, 45px);
+        height: clamp(40px, 8vw, 45px);
+        font-size: clamp(1rem, 2vw, 1.1rem);
+    }
+    
+    .author-name {
+        font-size: clamp(0.9rem, 1.5vw, 0.95rem);
+    }
+    
+    /* CTA Section */
+    .cta-section {
+        padding: 3rem 1.5rem;
+        width: 100%;
+    }
+    
+    .cta-title {
+        font-size: clamp(1.7rem, 3vw, 2rem);
+    }
+    
+    .cta-text {
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+    }
+    
+    /* Contacto */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        width: 100%;
+    }
+    
+    .contact-info {
+        gap: 1rem;
+    }
+    
+    .contact-item {
+        padding: 1.5rem;
+        gap: 1rem;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .contact-icon {
+        flex-shrink: 0;
+    }
+    
+    .contact-icon i {
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
+    }
+    
+    .contact-details {
+        flex: 1;
+    }
+    
+    .contact-details h3 {
+        font-size: clamp(1rem, 2vw, 1.1rem);
+        margin-bottom: 0.5rem;
+    }
+    
+    .contact-details p {
+        font-size: clamp(0.9rem, 1.5vw, 0.95rem);
+        line-height: 1.6;
+    }
+    
+    .map-container {
+        height: clamp(250px, 30vh, 300px);
+        width: 100%;
+    }
+    
+    .map-placeholder i {
+        font-size: clamp(2.5rem, 5vw, 3rem);
+    }
+    
+    .map-placeholder p {
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+    }
+    
+    /* Footer */
+    .footer {
+        padding: 3rem 1.5rem 1.5rem;
+        width: 100%;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-section h3 {
+        font-size: clamp(1.1rem, 2vw, 1.2rem);
+    }
+    
+    .footer-section p,
+    .footer-section li {
+        font-size: clamp(0.85rem, 1.5vw, 0.9rem);
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .social-links a {
+        width: clamp(38px, 8vw, 40px);
+        height: clamp(38px, 8vw, 40px);
+    }
+    
+    .social-links a i {
+        font-size: clamp(1rem, 2vw, 1.1rem);
+    }
+    
+    .footer-bottom {
+        font-size: clamp(0.8rem, 1.5vw, 0.85rem);
+        padding-top: 1.5rem;
+    }
+    
+    /* WhatsApp flotante */
+    .whatsapp-float {
+        width: clamp(50px, 10vw, 55px);
+        height: clamp(50px, 10vw, 55px);
+        font-size: clamp(1.5rem, 3vw, 1.7rem);
+        bottom: clamp(15px, 3vh, 20px);
+        right: clamp(15px, 3vw, 20px);
+    }
+}
+
+/* ========================================
+   MÓVILES PEQUEÑOS (max-width: 480px)
+======================================== */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .nav-container {
+        padding: clamp(0.7rem, 1.5vw, 0.7rem) clamp(1rem, 2vw, 1rem);
+        width: 100%;
+    }
+    
+    .logo-img {
+        height: clamp(40px, 5vw, 45px);
+    }
+    
+    .logo-main {
+        font-size: clamp(0.8rem, 1.2vw, 0.85rem);
+    }
+    
+    .logo-sub {
+        font-size: clamp(0.6rem, 0.8vw, 0.6rem);
+    }
+    
+    .mobile-toggle {
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
+    }
+    
+    .nav-menu {
+        top: clamp(55px, 7vh, 60px);
+    }
+    
+    .hero {
+        min-height: clamp(85vh, 90vh, 90vh);
+        padding: 4rem 1rem 3rem;
+        width: 100%;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.6rem, 3.5vw, 1.8rem);
+        margin-bottom: 1rem;
+    }
+    
+    .verse-text {
+        font-size: clamp(0.95rem, 2vw, 1rem);
+    }
+    
+    .verse-ref {
+        font-size: clamp(0.8rem, 1.5vw, 0.85rem);
+    }
+    
+    .hero-description {
+        font-size: clamp(0.9rem, 1.8vw, 0.95rem);
+        margin-bottom: 1.5rem;
+    }
+    
+    .section {
+        padding: 3rem 1rem;
+        width: 100%;
+    }
+    
+    .section-title {
+        font-size: clamp(1.4rem, 3vw, 1.7rem);
+    }
+    
+    .section-subtitle {
+        font-size: clamp(0.9rem, 1.8vw, 0.95rem);
+    }
+    
+    .btn {
+        padding: clamp(0.7rem, 1.5vw, 0.8rem) clamp(1.2rem, 2.5vw, 1.5rem);
+        font-size: clamp(0.85rem, 1.5vw, 0.9rem);
+    }
+    
+    .schedule-card,
+    .about-card,
+    .ministry-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+    
+    .cta-section {
+        padding: 2.5rem 1rem;
+        width: 100%;
+    }
+    
+    .footer {
+        padding: 2.5rem 1rem 1rem;
+        width: 100%;
+    }
+    
+    .map-container {
+        height: clamp(220px, 25vh, 250px);
+        width: 100%;
+    }
+}
+
+/* ========================================
+   MÓVILES MUY PEQUEÑOS (max-width: 360px)
+======================================== */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 0.8rem;
+        width: 100%;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.5rem, 3vw, 1.6rem);
+    }
+    
+    .section-title {
+        font-size: clamp(1.3rem, 2.8vw, 1.5rem);
+    }
+    
+    .btn {
+        padding: clamp(0.6rem, 1.2vw, 0.7rem) clamp(1rem, 2vw, 1.2rem);
+        font-size: clamp(0.8rem, 1.4vw, 0.85rem);
+    }
+    
+    .schedule-card,
+    .about-card,
+    .ministry-card,
+    .testimonial-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .logo-img {
+        height: clamp(38px, 4.5vw, 40px);
+    }
+}
+
+/* ========================================
+   LANDSCAPE
+======================================== */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+        padding: 3rem 1.5rem 2rem;
+        width: 100%;
+    }
+    
+    .hero-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .hero-buttons .btn {
+        flex: 1;
+        min-width: 200px;
+    }
+}
+
+/* ========================================
+   ACCESIBILIDAD
+======================================== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ========================================
+   TOUCH DEVICES
+======================================== */
+@media (hover: none) and (pointer: coarse) {
+    .btn,
+    .nav-link,
+    .ministry-card,
+    .schedule-card,
+    .about-card {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .btn {
+        min-height: 44px;
+    }
+    
+    .nav-link {
+        padding: clamp(0.8rem, 1.5vw, 1rem);
+    }
+}
+
+/* ========================================
+   IMPRESIÓN
+======================================== */
+@media print {
+    nav,
+    .whatsapp-float,
+    .hero-buttons,
+    .cta-buttons,
+    .scroll-indicator,
+    .social-links,
+    .mobile-toggle {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+    }
+}
+
+/* ========================================
+   SECCIÓN DE UBICACIÓN - MÓVILES
+======================================== */
+@media (max-width: 768px) {
+    .location-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 100%;
+    }
+    
+    .location-info {
+        order: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .location-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.5rem;
+        background: var(--light);
+        border-radius: 12px;
+    }
+    
+    .location-icon {
+        flex-shrink: 0;
+        width: clamp(45px, 8vw, 50px);
+        height: clamp(45px, 8vw, 50px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--primary);
+        color: var(--white);
+        border-radius: 50%;
+        font-size: clamp(1.1rem, 2vw, 1.3rem);
+    }
+    
+    .location-text {
+        flex: 1;
+    }
+    
+    .location-text h3 {
+        font-size: clamp(1rem, 2vw, 1.1rem);
+        margin-bottom: 0.5rem;
+        color: var(--primary);
+        font-weight: 600;
+    }
+    
+    .location-text p {
+        font-size: clamp(0.85rem, 1.5vw, 0.9rem);
+        line-height: 1.6;
+        color: var(--text-secondary);
+        margin: 0;
+    }
+    
+    .location-map {
+        order: 2;
+        width: 100%;
+    }
+    
+    .map-container {
+        height: clamp(250px, 30vh, 300px);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
+    
+    .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+}
+
+/* ========================================
+   DESKTOP (1025px+)
+======================================== */
+@media (min-width: 1025px) {
+    .nav-container {
+        padding: 1rem 2rem;
+        min-height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .logo-img {
+        height: clamp(55px, 5vw, 60px);
+    }
+    
+    .logo-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .logo-main {
+        font-size: clamp(1rem, 1.2vw, 1.1rem);
+        line-height: 1.2;
+    }
+    
+    .logo-sub {
+        font-size: clamp(0.68rem, 0.8vw, 0.75rem);
+        line-height: 1.2;
+    }
+    
+    .nav-menu {
+        gap: clamp(1.2rem, 2vw, 2.2rem);
+        display: flex;
+        align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav-menu li {
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
+    
+    .nav-link {
+        font-size: clamp(0.88rem, 1.2vw, 1rem);
+        padding: 0.5rem clamp(0.6rem, 1vw, 0.8rem);
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+    
+    .featured-post {
+        grid-template-columns: 1.2fr 1fr;
+        min-height: clamp(420px, 45vh, 520px);
+        max-height: clamp(470px, 50vh, 570px);
+        width: 100%;
+    }
+    
+    .featured-post-image {
+        min-height: clamp(420px, 45vh, 520px);
+        max-height: clamp(470px, 50vh, 570px);
+    }
+    
+    .featured-post-content {
+        padding: clamp(2rem, 3vw, 2.5rem);
+    }
+    
+    .featured-post-title {
+        font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+        line-height: 1.3;
+    }
+    
+    .post-meta {
+        font-size: clamp(0.8rem, 1.5vw, 0.85rem);
+        gap: clamp(0.8rem, 1.5vw, 1rem);
+    }
+    
+    .featured-post-excerpt {
+        font-size: clamp(0.9rem, 1.8vw, 0.95rem);
+        line-height: 1.65;
+    }
+    
+    .container {
+        max-width: clamp(1140px, 90vw, 1400px);
+        padding: 0 2rem;
+        box-sizing: border-box;
+    }
+    
+    .nav-container {
+        max-width: clamp(1140px, 90vw, 1400px);
+    }
+}
+
+/* ========================================
+   DESKTOP MEDIANO (1400px - 1600px)
+======================================== */
+@media (min-width: 1400px) and (max-width: 1600px) {
+    .container {
+        max-width: clamp(1200px, 85vw, 1320px);
+    }
+    
+    .nav-container {
+        max-width: clamp(1200px, 85vw, 1320px);
+    }
+    
+    .nav-menu {
+        gap: clamp(1.5rem, 2.5vw, 1.8rem);
+    }
+    
+    .nav-link {
+        font-size: clamp(0.92rem, 1.3vw, 0.95rem);
+    }
+}
+
+/* ========================================
+   DESKTOP GRANDE (1600px+)
+======================================== */
+@media (min-width: 1600px) {
+    .container {
+        max-width: clamp(1320px, 80vw, 1500px);
+    }
+    
+    .nav-container {
+        max-width: clamp(1320px, 80vw, 1500px);
+    }
+    
+    .nav-menu {
+        gap: clamp(1.8rem, 3vw, 2.5rem);
+    }
+    
+    .nav-link {
+        font-size: clamp(0.95rem, 1.4vw, 1rem);
+    }
+}
