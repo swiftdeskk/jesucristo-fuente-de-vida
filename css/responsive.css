@@ -1371,3 +1371,111 @@ body {
         font-size: clamp(0.95rem, 1.4vw, 1rem);
     }
 }
+
+/* ========================================
+   RESPONSIVE - NAVEGACIÓN
+======================================== */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 992px) {
+    .nav-menu {
+        gap: clamp(0.6rem, 1.2vw, 1.5rem);
+    }
+    
+    .nav-link {
+        font-size: clamp(0.78rem, 0.82vw, 0.9rem);
+    }
+    
+    .logo-main {
+        font-size: clamp(0.9rem, 0.95vw, 1rem);
+    }
+    
+    .logo-sub {
+        font-size: clamp(0.55rem, 0.6vw, 0.65rem);
+    }
+}
+
+/* Menú móvil */
+@media (max-width: 768px) {
+    .mobile-toggle {
+        display: block;
+        z-index: 1001;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        max-width: 80%;
+        height: 100vh;
+        background: var(--white);
+        flex-direction: column;
+        gap: 0;
+        padding: 6rem 2rem 2rem;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+        transition: right 0.4s ease;
+        overflow-y: auto;
+        margin-left: 0;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 1rem 0;
+        font-size: 1.1rem;
+        border-bottom: 1px solid var(--light);
+        white-space: normal;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    .logo-img {
+        height: 50px;
+    }
+
+    .logo-main {
+        font-size: 1rem;
+    }
+
+    .logo-sub {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0.8rem 1rem;
+    }
+
+    .logo-img {
+        height: 45px;
+    }
+
+    .logo-container {
+        gap: 0.7rem;
+    }
+
+    .logo-main {
+        font-size: 0.95rem;
+    }
+
+    .logo-sub {
+        font-size: 0.6rem;
+    }
+
+    .nav-menu {
+        width: 280px;
+        padding: 5rem 1.5rem 2rem;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        padding: 0.9rem 0;
+    }
+}
