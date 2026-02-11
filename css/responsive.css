@@ -343,7 +343,7 @@ body {
 /* ========================================
    MÓVILES (max-width: 768px)
 ======================================== */
-@media (max-width: 768px) {
+@media (max-width: 1060px) {
     /* Variables ajustadas */
     :root {
         --spacing-xs: 0.5rem;
@@ -1150,7 +1150,7 @@ body {
 /* ========================================
    SECCIÓN DE UBICACIÓN - MÓVILES
 ======================================== */
-@media (max-width: 768px) {
+@media (max-width: 1060px) {
     .location-grid {
         display: flex;
         flex-direction: column;
@@ -1371,10 +1371,6 @@ body {
         font-size: clamp(0.95rem, 1.4vw, 1rem);
     }
 }
-
-/* ========================================
-   RESPONSIVE - NAVEGACIÓN
-======================================== */
 
 /* Tablets y pantallas medianas */
 @media (max-width: 992px) {
