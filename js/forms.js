@@ -2,7 +2,7 @@
 // CONFIGURACIÓN GENERAL
 // ========================================
 const FormConfig = {
-    formspreeEndpoint: 'https://formspree.io/f/xykkpzok',
+    formspreeEndpoint: 'https://formspree.io/f/xkovbvqg',
     showSuccessMessage: true,
     showErrorMessage: true,
     redirectAfterSubmit: false,
@@ -170,9 +170,18 @@ class PhoneFormatter {
 class FormHandler {
     constructor(formElement) {
         this.form = formElement;
+        
+        // Prevenir inicialización duplicada
+        if (this.form.dataset.formHandlerInitialized) {
+            console.warn('FormHandler ya inicializado para este formulario');
+            return;
+        }
+        this.form.dataset.formHandlerInitialized = 'true';
+        
         this.fields = this.form.querySelectorAll('input, textarea, select');
         this.submitButton = this.form.querySelector('button[type="submit"], input[type="submit"]');
         this.useFormspree = this.form.hasAttribute('data-formspree') || this.form.id === 'contactForm';
+        this.isSubmitting = false; // Flag para prevenir envío duplicado
         this.init();
     }
     
@@ -281,6 +290,13 @@ class FormHandler {
     
     async handleSubmit(e) {
         e.preventDefault();
+        e.stopImmediatePropagation(); // Prevenir múltiples handlers
+        
+        // Prevenir envío duplicado
+        if (this.isSubmitting) {
+            console.log('Formulario ya está siendo enviado');
+            return false;
+        }
         
         if (!this.validateForm()) {
             this.showNotification('Por favor, corrige los errores antes de enviar', 'error');
@@ -294,6 +310,7 @@ class FormHandler {
             return;
         }
         
+        this.isSubmitting = true; // Marcar como enviando
         this.disableSubmitButton();
         
         try {
@@ -317,6 +334,10 @@ class FormHandler {
             this.showNotification('Hubo un error al enviar el formulario. Por favor, intenta nuevamente.', 'error');
         } finally {
             this.enableSubmitButton();
+            // Solo resetear después de completar TODO el proceso
+            setTimeout(() => {
+                this.isSubmitting = false;
+            }, 1000);
         }
     }
     
@@ -448,6 +469,7 @@ class FormHandler {
     resetForm() {
         this.form.reset();
         this.fields.forEach(field => this.clearFieldError(field));
+        this.isSubmitting = false; // Resetear flag al limpiar formulario
         
         const counter = this.form.querySelector('.character-counter');
         if (counter) {
@@ -475,6 +497,10 @@ function initPhoneFormatters() {
     const phoneInputs = document.querySelectorAll('input[type="tel"], input[name="telefono"], input[name="phone"]');
     
     phoneInputs.forEach(input => {
+        // Prevenir inicialización duplicada
+        if (input.dataset.phoneFormatterInitialized) return;
+        input.dataset.phoneFormatterInitialized = 'true';
+        
         // Establecer placeholder
         if (!input.placeholder) {
             input.placeholder = '+51 999 999 999';
@@ -491,7 +517,7 @@ function initPhoneFormatters() {
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     
-    if (contactForm) {
+    if (contactForm && !contactForm.dataset.formHandlerInitialized) {
         new FormHandler(contactForm);
     }
 }
@@ -503,6 +529,10 @@ function initNewsletterForm() {
     const newsletterForms = document.querySelectorAll('.newsletter-form');
     
     newsletterForms.forEach(form => {
+        // Prevenir inicialización duplicada
+        if (form.dataset.newsletterInitialized) return;
+        form.dataset.newsletterInitialized = 'true';
+        
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             
@@ -596,7 +626,12 @@ function initAllForms() {
     const forms = document.querySelectorAll('form[data-validate="true"]');
     
     forms.forEach(form => {
-        new FormHandler(form);
+        // Evitar inicializar el formulario de contacto dos veces
+        if (form.id === 'contactForm') return;
+        
+        if (!form.dataset.formHandlerInitialized) {
+            new FormHandler(form);
+        }
     });
 }
 
@@ -607,6 +642,10 @@ function initCharacterCounter() {
     const textareas = document.querySelectorAll('textarea[maxlength]');
     
     textareas.forEach(textarea => {
+        // Prevenir inicialización duplicada
+        if (textarea.dataset.counterInitialized) return;
+        textarea.dataset.counterInitialized = 'true';
+        
         const maxLength = textarea.getAttribute('maxlength');
         
         const counter = document.createElement('div');
@@ -646,6 +685,10 @@ function initAutoResizeTextarea() {
     const textareas = document.querySelectorAll('textarea[data-autoresize]');
     
     textareas.forEach(textarea => {
+        // Prevenir inicialización duplicada
+        if (textarea.dataset.autoresizeInitialized) return;
+        textarea.dataset.autoresizeInitialized = 'true';
+        
         textarea.style.overflow = 'hidden';
         
         const resize = () => {
@@ -665,19 +708,26 @@ function preventDoubleSubmit() {
     const forms = document.querySelectorAll('form');
     
     forms.forEach(form => {
+        // Evitar agregar el listener múltiples veces
+        if (form.dataset.doubleSubmitPrevented) return;
+        form.dataset.doubleSubmitPrevented = 'true';
+        
         let isSubmitting = false;
         
         form.addEventListener('submit', (e) => {
             if (isSubmitting) {
                 e.preventDefault();
+                e.stopImmediatePropagation();
                 return false;
             }
             
             isSubmitting = true;
             
-            setTimeout(() => {
-                isSubmitting = false;
-            }, 3000);
+        }, true); // Captura en fase de captura
+        
+        // Resetear cuando el formulario se resetea
+        form.addEventListener('reset', () => {
+            isSubmitting = false;
         });
     });
 }
@@ -787,7 +837,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initCharacterCounter();
     initAutoResizeTextarea();
     preventDoubleSubmit();
-    
 });
 
 // ========================================
