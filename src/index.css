@@ -1,0 +1,242 @@
+@import 'tailwindcss';
+
+/* El modo oscuro es opcional y se activa solo si el visitante lo pide. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================================================
+   SISTEMA DE DISEÑO — JFDV 2026
+
+   Principios:
+   - El azul de la iglesia (#4A90E2) es el único acento de interfaz; el dorado
+     queda reservado para las citas bíblicas.
+   - Superficies redondeadas con sombras suaves y en capas: profundidad sin
+     ruido. Los degradados existen, pero solo dentro de la gama del acento.
+   - Neutros fríos con un matiz azul marino para que el acento se sienta
+     parte de la misma familia en claro y en oscuro.
+   ========================================================================== */
+@theme {
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display:
+    'Bricolage Grotesque', 'Manrope', ui-sans-serif, system-ui, sans-serif;
+
+  /* Acento: el azul de marca (#4A90E2) llevado a una escala usable.
+     500 es el original; para texto sobre blanco se usa 700 (contraste AA). */
+  --color-brand-50: #f1f6fd;
+  --color-brand-100: #dfeafa;
+  --color-brand-200: #c6dcf6;
+  --color-brand-300: #9cc4ef;
+  --color-brand-400: #6ba3e8;
+  --color-brand-500: #4a90e2;
+  --color-brand-600: #357abd;
+  --color-brand-700: #2a6199;
+  --color-brand-800: #254f7c;
+  --color-brand-900: #234367;
+  --color-brand-950: #172b44;
+
+  /* Dorado: reservado para las citas bíblicas. No es un color de interfaz. */
+  --color-gold-100: #f7ecd0;
+  --color-gold-300: #dcbb6a;
+  --color-gold-400: #c99a2e;
+  --color-gold-500: #b08420;
+  --color-gold-600: #8f6a19;
+
+  /* Neutros fríos con matiz azul marino. */
+  --color-ink-50: #f6f8fb;
+  --color-ink-100: #eef1f6;
+  --color-ink-200: #e0e5ee;
+  --color-ink-300: #c7cfde;
+  --color-ink-400: #96a1b8;
+  --color-ink-500: #66718c;
+  --color-ink-600: #48526b;
+  --color-ink-700: #343d54;
+  --color-ink-800: #202839;
+  --color-ink-900: #141a29;
+  --color-ink-950: #0a0e1a;
+
+  /* Sombras en capas: una corta de contacto + una larga difusa. */
+  --shadow-soft: 0 1px 2px rgb(10 14 26 / 0.05), 0 10px 30px -14px rgb(10 14 26 / 0.14);
+  --shadow-lift: 0 2px 4px rgb(10 14 26 / 0.06), 0 22px 48px -18px rgb(10 14 26 / 0.24);
+  --shadow-overlay: 0 24px 64px -16px rgb(10 14 26 / 0.4);
+
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.75rem;
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-tap-highlight-color: transparent;
+
+    /* Las entradas laterales dejan elementos unos píxeles fuera del borde
+       derecho mientras esperan a ser visibles. `clip` los recorta sin crear
+       un contenedor de scroll, así que `position: sticky` sigue funcionando. */
+    overflow-x: clip;
+  }
+
+  body {
+    @apply bg-white text-ink-600 antialiased;
+    @apply dark:bg-ink-950 dark:text-ink-300;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.7;
+    overflow-x: hidden;
+    overflow-x: clip;
+    /* Cambio de tema sin salto brusco. */
+    transition:
+      background-color 0.35s ease,
+      color 0.35s ease;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-ink-900 dark:text-ink-50;
+    text-wrap: balance;
+  }
+
+  /* Bricolage a tamaños grandes pide tracking negativo para no verse suelta. */
+  .font-display {
+    letter-spacing: -0.025em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Cifras alineadas en tablas y contadores. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  img {
+    @apply max-w-full;
+  }
+
+  ::selection {
+    @apply bg-brand-500/25;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-500;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-ink-300) transparent;
+  }
+
+  .dark * {
+    scrollbar-color: var(--color-ink-700) transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ==========================================================================
+   UTILIDADES
+   ========================================================================== */
+
+@utility container-page {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+
+  @media (width >= 768px) {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* Superficie de tarjeta: borde sutil + sombra suave. */
+@utility card {
+  @apply rounded-2xl border border-ink-200/70 bg-white shadow-[var(--shadow-soft)];
+  @apply dark:border-ink-800 dark:bg-ink-900/60 dark:shadow-none;
+}
+
+/* Variante interactiva: la tarjeta se eleva un paso al pasar el cursor. */
+@utility card-hover {
+  @apply rounded-2xl border border-ink-200/70 bg-white shadow-[var(--shadow-soft)];
+  @apply transition-[transform,box-shadow,border-color] duration-300;
+  @apply hover:-translate-y-1 hover:border-ink-300/80 hover:shadow-[var(--shadow-lift)];
+  @apply dark:border-ink-800 dark:bg-ink-900/60 dark:shadow-none dark:hover:border-ink-700;
+}
+
+/* Vidrio contenido: 10px de desenfoque, sin saturación extra. Un radio mayor
+   se nota poco y cuesta mucho en GPUs modestas al hacer scroll. */
+@utility glass {
+  background-color: color-mix(in oklab, white 85%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  &:where(.dark, .dark *) {
+    background-color: color-mix(in oklab, var(--color-ink-950) 85%, transparent);
+  }
+}
+
+/* Halo radial del acento: da atmósfera a una sección sin ensuciar el texto. */
+@utility aura {
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        42rem 22rem at 12% 0%,
+        color-mix(in oklab, var(--color-brand-500) 9%, transparent),
+        transparent 68%
+      ),
+      radial-gradient(
+        36rem 20rem at 95% 100%,
+        color-mix(in oklab, var(--color-brand-400) 6%, transparent),
+        transparent 70%
+      );
+  }
+}
+
+/* Filete horizontal que se desvanece: separa sin gritar. */
+@utility rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    var(--color-ink-200),
+    color-mix(in oklab, var(--color-ink-200) 25%, transparent)
+  );
+
+  &:where(.dark, .dark *) {
+    background: linear-gradient(
+      to right,
+      var(--color-ink-800),
+      color-mix(in oklab, var(--color-ink-800) 25%, transparent)
+    );
+  }
+}

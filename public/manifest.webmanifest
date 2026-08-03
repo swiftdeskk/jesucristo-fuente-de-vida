@@ -1,0 +1,24 @@
+{
+  "name": "Jesucristo Fuente de Vida para Todas las Generaciones",
+  "short_name": "JFDV",
+  "description": "Iglesia cristiana en Huaral. Fe, familia y esperanza para todas las generaciones.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4a90e2",
+  "lang": "es-PE",
+  "icons": [
+    {
+      "src": "/images/favicon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "512x308",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
